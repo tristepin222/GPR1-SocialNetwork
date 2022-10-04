@@ -1,0 +1,14 @@
+{
+  "name": "CPNV-ES-GRP1/SocialNetwork",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Nicolas.GLASSEY",
+      "email": "nicolas.glassey@cpnv.ch"
+    }
+  ],
+  "require": {
+  }
+}
