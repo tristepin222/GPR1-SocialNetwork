@@ -1,5 +1,7 @@
 <?php
 
+namespace SocialNetwork;
+
 interface IObservable
 {
     //Subscribe an Observer to an Observable

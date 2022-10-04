@@ -1,5 +1,7 @@
 <?php
 
+namespace SocialNetwork;
+
 interface IObserver
 {
     //Receive update from the observable
