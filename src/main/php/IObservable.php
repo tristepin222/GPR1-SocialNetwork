@@ -2,8 +2,14 @@
 
 namespace SocialNetwork;
 
-interface IObserver
+interface IObservable
 {
-    //Receive update from the observable
-    public function update(IObservable $observable);
+    //Subscribe an Observer to an Observable
+    public function subscribe(array $observers);
+
+    //Unsubscribe an Observer from an Observable
+    public function unsubscribe(IObserver $observer);
+
+    //Notify all Observers about a post, an event and any kind of updates
+    public function notifyObservers();
 }

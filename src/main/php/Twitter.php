@@ -2,20 +2,30 @@
 
 namespace SocialNetwork;
 
+use RuntimeException;
+
+require 'IObservable.php';
+
 class Twitter implements IObservable
 {
+    public function __construct(){}
 
-    public function subscribe(array $observers)
+    public function subscribe(array $observers):void
     {
         throw new RuntimeException();
     }
 
-    public function unsubscribe(IObserver $observer)
+    public function unsubscribe(IObserver $observer):void
     {
         throw new RuntimeException();
     }
 
-    public function notifyObservers()
+    public function notifyObservers():void
+    {
+        throw new RuntimeException();
+    }
+
+    public function getObservers():array
     {
         throw new RuntimeException();
     }
