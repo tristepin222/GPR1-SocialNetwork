@@ -1,5 +1,5 @@
 {
-  "name": "CPNV-ES-GRP1/SocialNetwork",
+  "name": "grp1/social_network",
   "description": "description",
   "minimum-stability": "stable",
   "license": "proprietary",
@@ -9,6 +9,7 @@
       "email": "nicolas.glassey@cpnv.ch"
     }
   ],
-  "require": {
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
   }
 }
