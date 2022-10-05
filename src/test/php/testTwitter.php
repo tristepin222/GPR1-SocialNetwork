@@ -37,10 +37,10 @@ class testTwitter extends TestCase
     {
         //given
         //refer to Setup method
-        $expectedAmountOfObservers = 0;
+        $expectedAmountOfObservers = 10;
 
         //when
-        //event is called directly by the assertion
+        $this->twitter->subscribe($this->generateObservers($expectedAmountOfObservers));
 
         //then
         $this->assertEquals($expectedAmountOfObservers, Count($this->twitter->getObservers()));
@@ -52,7 +52,7 @@ class testTwitter extends TestCase
         $observers = array();
         for ($i=0 ; $i <= $amountOfObserversToCreate ; $i++)
         {
-            $observers->add(new Follower());
+            $observers[] = new Follower();
         }
         return $observers;
     }
