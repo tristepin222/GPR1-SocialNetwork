@@ -7,7 +7,7 @@ use SocialNetwork\Twitter;
 require 'src\main\php\Twitter.php';
 
 # Require for Visual studio Code
-# require 'src\main\php\Twitter.php
+# require 'src\main\php\Twitter.php';
 
 class testTwitter extends TestCase
 {
@@ -30,7 +30,7 @@ class testTwitter extends TestCase
         //event is called directly by the assertion
 
         //then
-        $this->assertEquals($expectedAmountOfObservers, $this->twitter->getObservers());
+        $this->assertEquals($expectedAmountOfObservers, Count($this->twitter->getObservers()));
     }
 
     public function test_Observers_AfterInstantiationWithObservers_Success()
@@ -43,7 +43,7 @@ class testTwitter extends TestCase
         //event is called directly by the assertion
 
         //then
-        $this->assertEquals($expectedAmountOfObservers, $this->twitter.getObservers().Count());
+        $this->assertEquals($expectedAmountOfObservers, Count($this->twitter.getObservers()));
     }
 
     //region private methods
