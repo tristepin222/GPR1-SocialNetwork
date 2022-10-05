@@ -6,6 +6,9 @@ use SocialNetwork\Twitter;
 
 require '..\..\main\php\Twitter.php';
 
+# Require for Visual studio Code
+# require 'src\main\php\Twitter.php
+
 class testTwitter extends TestCase
 {
     //region private attributes
