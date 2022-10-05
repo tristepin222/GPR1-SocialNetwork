@@ -4,7 +4,7 @@ namespace TestSocialNetwork;
 use PHPUnit\Framework\TestCase;
 use SocialNetwork\Twitter;
 
-require '..\..\main\php\Twitter.php';
+require 'src\main\php\Twitter.php';
 
 class testTwitter extends TestCase
 {
