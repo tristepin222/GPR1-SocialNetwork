@@ -52,7 +52,7 @@ class testTwitter extends TestCase
         $observers = array();
         for ($i=0 ; $i <= $amountOfObserversToCreate ; $i++)
         {
-            $observers.add(new Follower());
+            $observers->add(new Follower());
         }
         return $observers;
     }
