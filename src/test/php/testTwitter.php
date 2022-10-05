@@ -43,7 +43,7 @@ class testTwitter extends TestCase
         //event is called directly by the assertion
 
         //then
-        $this->assertEquals($expectedAmountOfObservers, Count($this->twitter.getObservers()));
+        $this->assertEquals($expectedAmountOfObservers, Count($this->twitter->getObservers()));
     }
 
     //region private methods
@@ -52,7 +52,7 @@ class testTwitter extends TestCase
         $observers = array();
         for ($i=0 ; $i <= $amountOfObserversToCreate ; $i++)
         {
-            $observers.add(new Follower());
+            $observers->add(new Follower());
         }
         return $observers;
     }
