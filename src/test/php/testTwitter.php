@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use SocialNetwork\EmptyListOfSubscribersException;
 use SocialNetwork\Follower;
 use SocialNetwork\SubscriberAlreadyExistsException;
+use SocialNetwork\SubscriberNotFoundException;
 use SocialNetwork\Twitter;
 
 class testTwitter extends TestCase
@@ -95,7 +96,7 @@ class testTwitter extends TestCase
         $this->twitter->subscribe($followersToAdd);
 
         //then
-        $this->assertCount($expectedAmountOfSubscriber, $this->twitter.getObservers());
+        $this->assertCount($expectedAmountOfSubscriber, $this->twitter->getObservers());
     }
 
     public function test_subscribe_SubscriberAlreadyExists_ThrowsException()
@@ -106,7 +107,7 @@ class testTwitter extends TestCase
         $followers = $this->generateObservers($expectedAmountOfSubscriber);
         $this->twitter->subscribe($followers);
         $followersDuplicate = array();
-        $followersDuplicate->add($followers.get(0));
+        array_push($followersDuplicate, $followers[0]);
 
         //when
         //event is called directly by the assertion
@@ -125,7 +126,7 @@ class testTwitter extends TestCase
         $this->twitter->subscribe($followers);
 
         //when
-        $this->twitter->unsubscribe($followers.get(0));
+        $this->twitter->unsubscribe($followers[0]);
 
         //then
         $this->assertCount($expectedAmountOfSubscribers, $this->twitter->getObservers());
@@ -150,7 +151,7 @@ class testTwitter extends TestCase
         //given
         //refer to Before Each method
         $followerNotFound = new Follower();
-        $this->twitter->subscribe(generateObserver(10));
+        $this->twitter->subscribe($this->generateObservers(10));
 
         //when
         //event is called directly by the assertion
