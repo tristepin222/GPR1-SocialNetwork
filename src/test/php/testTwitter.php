@@ -3,11 +3,9 @@
 namespace TestSocialNetwork;
 use JetBrains\PhpStorm\Pure;
 use PHPUnit\Framework\TestCase;
-use SocialNetwork\EmptyListOfSubscribersException;
-use SocialNetwork\Follower;
-use SocialNetwork\SubscriberAlreadyExistsException;
-use SocialNetwork\SubscriberNotFoundException;
 use SocialNetwork\Twitter;
+
+require '..\..\..\vendor\autoload.php';
 
 class testTwitter extends TestCase
 {
