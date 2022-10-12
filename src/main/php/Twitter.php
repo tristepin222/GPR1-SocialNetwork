@@ -12,7 +12,10 @@ class Twitter implements IObservable
     private array $observers = array();
     //endregion private attributes
 
-    public function __construct(array $observers = null){}
+    public function __construct(array $observers = null)
+    {
+        throw new RuntimeException();
+    }
 
     public function subscribe(array $observers):void
     {
