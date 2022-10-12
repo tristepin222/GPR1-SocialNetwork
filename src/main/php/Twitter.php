@@ -17,7 +17,9 @@ class Twitter implements IObservable
 
     public function subscribe(array $observers):void
     {
-        throw new RuntimeException();
+       
+        $this->Observers += $observers;
+       
     }
 
     public function unsubscribe(IObserver $observer):void
