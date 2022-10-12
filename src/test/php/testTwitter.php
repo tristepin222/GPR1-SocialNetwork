@@ -3,11 +3,11 @@
 namespace TestSocialNetwork;
 use JetBrains\PhpStorm\Pure;
 use PHPUnit\Framework\TestCase;
-use SocialNetwork\EmptyListOfSubscribersException;
 use SocialNetwork\Follower;
-use SocialNetwork\SubscriberAlreadyExistsException;
 use SocialNetwork\SubscriberNotFoundException;
 use SocialNetwork\Twitter;
+
+require '..\..\..\vendor\autoload.php';
 
 class testTwitter extends TestCase
 {
@@ -38,13 +38,14 @@ class testTwitter extends TestCase
         //given
         //refer to Setup method
         $expectedAmountOfObservers = 10;
-        $this->twitter($this->generateObservers($expectedAmountOfObservers));
+        $observer = $this->generateObservers($expectedAmountOfObservers);
+        $this->twitter = new Twitter($this->generateObservers($expectedAmountOfObservers));
 
         //when
         //event is called directly by the assertion
 
         //then
-        $this->assertCount($expectedAmountOfObservers, $this->twitter->getObservers());
+        $this->assertEquals($expectedAmountOfObservers, Count($this->twitter->getObservers()));
     }
 
     public function test_twits_AfterInstantiation_Success(){
@@ -165,7 +166,7 @@ class testTwitter extends TestCase
     #[Pure] private function generateObservers($amountOfObserversToCreate):array
     {
         $observers = array();
-        for ($i=0 ; $i <= $amountOfObserversToCreate ; $i++)
+        for ($i=0 ; $i < $amountOfObserversToCreate ; $i++)
         {
             $observers[] = new Follower();
         }
