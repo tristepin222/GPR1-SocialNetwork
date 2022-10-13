@@ -6,6 +6,7 @@ require_once 'IObserver.php';
 
 class Follower implements IObserver
 {
+    public function __construct(int $id){}
 
     public function update(IObservable $observable):void
     {
