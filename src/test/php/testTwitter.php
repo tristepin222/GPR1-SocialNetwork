@@ -90,9 +90,9 @@ class testTwitter extends TestCase
         //given
         //refer to Setup Method
         $expectedAmountOfSubscriber = 30;
-        $followers[] = $this->generateObservers($expectedAmountOfSubscriber / 2);
+        $followers = $this->generateObservers($expectedAmountOfSubscriber / 2);
         $this->twitter->subscribe($followers);
-        $followersToAdd[] = $this->generateObservers($expectedAmountOfSubscriber / 2, Count($followers));
+        $followersToAdd = $this->generateObservers($expectedAmountOfSubscriber / 2, Count($followers));
 
         //when
         $this->twitter->subscribe($followersToAdd);
@@ -167,7 +167,7 @@ class testTwitter extends TestCase
     #[Pure] private function generateObservers($amountOfObserversToCreate, $startIndex = 0):array
     {
         $observers = array();
-        for ($i= $startIndex; $i < $amountOfObserversToCreate ; $i++)
+        for ($i= $startIndex; $i < $amountOfObserversToCreate + $startIndex ; $i++)
         {
             $observers[] = new Follower($i);
         }
