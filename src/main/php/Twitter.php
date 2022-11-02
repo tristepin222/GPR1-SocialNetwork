@@ -8,35 +8,54 @@ require 'IObservable.php';
 
 class Twitter implements IObservable
 {
-    public function __construct(array $observers = null){}
-
-    public function subscribe(array $observers):void
+    protected $Observers;
+    public function __construct($observers = null)
     {
-        throw new RuntimeException();
+        if (isset($observers)) {
+            $this->Observers = $observers;
+        } else {
+            $this->Observers = array();
+        }
     }
 
-    public function unsubscribe(IObserver $observer):void
+    public function subscribe(array $observers): void
     {
-        throw new RuntimeException();
+        
+        $this->Observers = array_push( $this->Observers, $observers);
     }
 
-    public function notifyObservers():void
+    public function unsubscribe(IObserver $observer): void
     {
-        throw new RuntimeException();
     }
 
-    public function getObservers():array
+    public function notifyObservers(): void
     {
-        throw new RuntimeException();
+        if(count($this->Observers) == 0){
+            throw new EmptyListOfSubscribersException();
+        }
     }
 
-    public function getTwits():array
+    public function getObservers(): array
     {
-        throw new RuntimeException();
+
+        return $this->Observers;
+    }
+    public function getTwits(): array
+    {
+
+        return $this->Observers;
     }
 }
 
-class TwitterException extends RuntimeException { }
-class EmptyListOfSubscribersException extends TwitterException { }
-class SubscriberAlreadyExistsException extends TwitterException { }
-class SubscriberNotFoundException extends TwitterException { }
+class TwitterException extends RuntimeException
+{
+}
+class EmptyListOfSubscribersException extends TwitterException
+{
+}
+class SubscriberAlreadyExistsException extends TwitterException
+{
+}
+class SubscriberNotFoundException extends TwitterException
+{
+}
