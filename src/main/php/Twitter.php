@@ -1,7 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SocialNetwork;
 
+use PHPUnit\Framework\MockObject\SoapExtensionNotAvailableException;
 use RuntimeException;
 
 require 'IObservable.php';
@@ -11,7 +14,13 @@ class Twitter implements IObservable
     protected $Observers;
     public function __construct($observers = null)
     {
+
+
         if (isset($observers)) {
+
+            if (count($observers) == 30) {
+                echo "over";
+            }
             $this->Observers = $observers;
         } else {
             $this->Observers = array();
@@ -20,41 +29,38 @@ class Twitter implements IObservable
 
     public function subscribe(array $observers): void
     {
-    
-       // if($observers == $this->Observers){
-       //    throw new SubscriberAlreadyExistsException(); 
-       // }
-        foreach($observers as $observer){
+        if (isset($this->Observers[0])) {
+            if ($this->Observers[0] == $observers[0]) {
+
+                throw new SubscriberAlreadyExistsException();
+            }
+        }
+        foreach ($observers as $observer) {
             array_push($this->Observers, $observer);
         }
-      
-        
-        
-       
     }
 
     public function unsubscribe(IObserver $observer): void
     {
-       
-        if(count($this->Observers) == 0){
+
+        if (count($this->Observers) == 0) {
             throw new EmptyListOfSubscribersException();
-        }else if (count($this->Observers) <= $observer->getID()) {
+        } else if (count($this->Observers) <= $observer->getID()) {
             throw new  SubscriberNotFoundException();
         }
-        array_pop( $this->Observers);
-         
+        array_pop($this->Observers);
     }
 
     public function notifyObservers(): void
     {
-        if(count($this->Observers) == 0){
+        if (count($this->Observers) == 0) {
             throw new EmptyListOfSubscribersException();
         }
     }
 
     public function getObservers(): array
     {
-        
+
         return $this->Observers;
     }
     public function getTwits(): array
